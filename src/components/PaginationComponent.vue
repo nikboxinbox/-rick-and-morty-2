@@ -22,7 +22,6 @@ export default {
     currentPage(val) {
       // this.updatePage(val);
       this.charactersStore.updatePage(val);
-      debugger;
     },
     "charactersStore.page"(val) {
       this.currentPage = val;

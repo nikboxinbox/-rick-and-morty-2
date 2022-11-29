@@ -14,11 +14,12 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "pinia": "^2.0.27",
+    "pinia-plugin-persist": "^1.0.0",
     "quasar": "^2.6.0",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0",
     "stylus": "^0.58.1",
-    "stylus-loader": "^7.0.0"
+    "stylus-loader": "^7.0.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",

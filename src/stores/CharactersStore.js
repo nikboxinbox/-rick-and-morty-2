@@ -27,8 +27,7 @@ export const useCharactersStore = defineStore("charactersStore", {
 
         const NAME_URL =
           this.filterName == "" ? "" : `&name=${this.filterName}`;
-        // this.page;
-        debugger;
+
         const response = await fetch(
           `${BASE_URL}/character/?page=${this.page}${NAME_URL}${STATUS_URL}`
         );
@@ -97,5 +96,8 @@ export const useCharactersStore = defineStore("charactersStore", {
       this.filterName = filter.searchName;
       this.updateData();
     }
+  },
+  persist: {
+    enabled: true
   }
 });

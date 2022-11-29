@@ -31,8 +31,7 @@ export default {
     status() {
       this.filtration();
     },
-    getErrorMessageFromApi(val) {
-      // Seach name error message
+    "charactersStore.errorMessageFromApi"(val) {
       if (
         val === "There is nothing here" &&
         this.charactersStore.filterName !== ""
