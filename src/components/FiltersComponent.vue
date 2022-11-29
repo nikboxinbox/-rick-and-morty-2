@@ -47,13 +47,9 @@ export default {
     charactersStore() {
       return useCharactersStore();
     }
-
-    // ...mapGetters(["getStatus", "getFilterName", "getErrorMessageFromApi"]),
   },
   methods: {
-    // ...mapActions(["updateFilters"]),
     filtration() {
-      // this.updateFilters({ status: this.status, searchName: this.searchName });
       this.charactersStore.updateFilters({
         status: this.status,
         searchName: this.searchName
@@ -72,9 +68,7 @@ export default {
     }
   },
   mounted() {
-    // this.status = this.getStatus;
     this.status = this.charactersStore.status;
-    // this.searchName = this.getFilterName;
     this.searchName = this.charactersStore.filterName;
     this.$refs.inputFilter.$el.focus();
   }

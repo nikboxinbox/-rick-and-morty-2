@@ -10,7 +10,6 @@
 </template>
 
 <script>
-// import { mapGetters, mapActions } from "vuex";
 import { useCharactersStore } from "../stores/CharactersStore";
 
 export default {
@@ -20,7 +19,6 @@ export default {
   }),
   watch: {
     currentPage(val) {
-      // this.updatePage(val);
       this.charactersStore.updatePage(val);
     },
     "charactersStore.page"(val) {
@@ -31,11 +29,7 @@ export default {
     charactersStore() {
       return useCharactersStore();
     }
-    // ...mapGetters(["getTotalPage", "getPage"])
   },
-  // methods: {
-  //   // ...mapActions(["updatePage"]),
-  // },
   mounted() {
     this.currentPage = this.charactersStore.page;
   }

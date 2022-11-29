@@ -31,17 +31,14 @@
 <script>
 import { useCharactersStore } from "../stores/CharactersStore";
 
-// import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "CharacterList ",
   computed: {
     charactersStore() {
       return useCharactersStore();
     }
-    // ...mapGetters(["getCharacters"]),
   },
   methods: {
-    // ...mapMutations(["setSingleCharacter"]),
     getEpisodeNumber(episodeUrl) {
       return episodeUrl.split("/").slice(-1).join();
     }

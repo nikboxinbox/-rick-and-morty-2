@@ -20,24 +20,17 @@ q-page(v-if="episode").page-episode-card
 </template>
 
 <script>
-// import { mapActions, mapGetters } from "vuex";
 import { useCharactersStore } from "../stores/CharactersStore";
 
 export default {
   name: "CharacterPage",
-
   computed: {
     charactersStore() {
       return useCharactersStore();
     },
-    // ...mapGetters(["getSingleEpisode"]),
     episode() {
       return this.charactersStore.singleEpisode;
     }
-  },
-
-  methods: {
-    // ...mapActions(["updateSingleEpisode"]),
   },
   async created() {
     await this.charactersStore.updateSingleEpisode(this.$route.params.id);

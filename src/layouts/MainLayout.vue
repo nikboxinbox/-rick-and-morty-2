@@ -23,26 +23,12 @@ q-layout
   </template>
 
 <script>
-// import { defineComponent, ref } from "vue";
-// import { mapActions, mapMutations } from "vuex";
-
 //Components
 import FiltersComponent from "src/components/FiltersComponent.vue";
 export default {
   name: "MainLayout",
   components: {
     FiltersComponent
-  },
-  methods: {
-    // ...mapActions(["updateData"]),
-    // ...mapMutations(["setPage", "setStatus", "setFilterName"]),
-    // async goHome() {
-    //   await this.setPage(1);
-    //   await this.setStatus("All");
-    //   await this.setFilterName("");
-    //   await this.updateData();
-    //   this.$router.push("/");
-    // }
   }
 };
 </script>

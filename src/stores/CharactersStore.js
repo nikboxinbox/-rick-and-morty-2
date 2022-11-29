@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
 import { BASE_URL } from "src/api";
 
 export const useCharactersStore = defineStore("charactersStore", {

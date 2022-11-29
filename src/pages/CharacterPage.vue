@@ -16,13 +16,9 @@ q-page(v-if="charactersStore.singleCharacter").page-character-card
 <script>
 import { useCharactersStore } from "../stores/CharactersStore";
 
-// import { mapActions, mapGetters } from "vuex";
-
 export default {
   name: "CharacterPage",
-
   computed: {
-    // ...mapGetters(["getSingleCharacter"]),
     charactersStore() {
       return useCharactersStore();
     },
@@ -31,9 +27,6 @@ export default {
     }
   },
 
-  // methods: {
-  //   // ...mapActions(["updateSingleCharacter"])
-  // },
   async created() {
     await this.charactersStore.updateSingleCharacter(this.$route.params.id);
   }

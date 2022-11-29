@@ -23,17 +23,6 @@ export default {
     charactersStore() {
       return useCharactersStore();
     }
-    // ...mapGetters([
-    //   "getCharacters",
-    //   "getErrorMessageFromApi",
-    //   "getFilterName",
-    //   "getStatus"
-    // ])
-  },
-
-  methods: {
-    // ...mapMutations(["setFilterName"]),
-    // ...mapActions(["updateFilters"]),
   }
 };
 </script>
