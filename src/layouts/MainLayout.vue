@@ -1,116 +1,59 @@
-<template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+<template lang="pug">
+q-layout
+  q-header.main-layout__header.text-dark
+    q-page-sticky(position="top" expand ).bg-accent
+      q-toolbar.main-layout__tool-bar
+        .container-btn
+          q-btn(
+            v-show="this.$route.path !== '/'"
+            @click.prevent="$router.go(-1)"
+            icon="arrow_back"
+            color="white"
+            size="lg"
+            flat dense round
+          )
+        q-avatar(size="60px" )
+          img(src="~assets/rick.png" size="xl")
+        q-toolbar-title Rick and Morty
+        FiltersComponent(v-if="this.$route.path === '/'")
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+  q-page-container
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
-
-    <q-page-container>
-      <router-view />
-    </q-page-container>
-  </q-layout>
-</template>
+    <router-view />
+  </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+// import { defineComponent, ref } from "vue";
+// import { mapActions, mapMutations } from "vuex";
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
-export default defineComponent({
-  name: 'MainLayout',
-
+//Components
+import FiltersComponent from "src/components/FiltersComponent.vue";
+export default {
+  name: "MainLayout",
   components: {
-    EssentialLink
+    FiltersComponent
   },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
+  methods: {
+    // ...mapActions(["updateData"]),
+    // ...mapMutations(["setPage", "setStatus", "setFilterName"]),
+    // async goHome() {
+    //   await this.setPage(1);
+    //   await this.setStatus("All");
+    //   await this.setFilterName("");
+    //   await this.updateData();
+    //   this.$router.push("/");
+    // }
   }
-})
+};
 </script>
+<style lang="stylus">
+.main-layout__tool-bar
+  background-color #ff9800
+  height: 60px
+.container-btn
+  width 44px
+.q-toolbar__title
+  font-size: 28px
+  color: white
+  font-weight: normal
+</style>

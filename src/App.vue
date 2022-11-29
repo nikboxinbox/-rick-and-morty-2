@@ -3,9 +3,17 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { useCharactersStore } from "./stores/CharactersStore";
 
-export default defineComponent({
-  name: 'App'
-})
+export default {
+  name: "App",
+  computed: {
+    charactersStore() {
+      return useCharactersStore();
+    }
+  },
+  async mounted() {
+    this.charactersStore.updateData();
+  }
+};
 </script>
