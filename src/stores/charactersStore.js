@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
-import { BASE_URL } from "src/api";
+const BASE_URL = "https://rickandmortyapi.com/api";
 
-export const useCharactersStore = defineStore("charactersStore", {
+export const useCharactersStore = defineStore("characters", {
   state: () => ({
     characters: [],
     page: 1,
