@@ -28,7 +28,9 @@ export default {
   },
 
   async created() {
-    await this.charactersStore.updateSingleCharacter(this.$route.params.id);
+    await this.charactersStore.getSingleCharacterFromServer(
+      this.$route.params.id
+    );
   }
 };
 </script>

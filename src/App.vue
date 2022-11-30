@@ -13,7 +13,7 @@ export default {
     }
   },
   async mounted() {
-    this.charactersStore.updateData();
+    this.charactersStore.getCharactersFromServer();
   }
 };
 </script>

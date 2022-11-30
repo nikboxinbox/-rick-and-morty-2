@@ -33,7 +33,9 @@ export default {
     }
   },
   async created() {
-    await this.charactersStore.updateSingleEpisode(this.$route.params.id);
+    await this.charactersStore.getSingleEpisodeFromServer(
+      this.$route.params.id
+    );
   }
 };
 </script>

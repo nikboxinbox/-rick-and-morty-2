@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+
 const BASE_URL = "https://rickandmortyapi.com/api";
 
 export const useCharactersStore = defineStore("characters", {
@@ -14,11 +15,9 @@ export const useCharactersStore = defineStore("characters", {
     singleEpisode: null,
     multipleCharactersImages: null
   }),
-  getters: {
-    doubleCount: (state) => state.counter * 2
-  },
+
   actions: {
-    async updateData() {
+    async getCharactersFromServer() {
       try {
         this.errorMessageFromApi = null;
 
@@ -44,7 +43,7 @@ export const useCharactersStore = defineStore("characters", {
         console.error(e);
       }
     },
-    async updateSingleCharacter(id) {
+    async getSingleCharacterFromServer(id) {
       try {
         const response = await fetch(`${BASE_URL}/character/${id}`);
         const data = await response.json();
@@ -54,12 +53,12 @@ export const useCharactersStore = defineStore("characters", {
         console.error(e);
       }
     },
-    async updateSingleEpisode(id) {
+    async getSingleEpisodeFromServer(id) {
       try {
         const response = await fetch(`${BASE_URL}/episode/${id}`);
         const data = await response.json();
         const { name, air_date, characters } = data;
-        const charactersEpisode = await this.updateMultipleCharactersEpisode(
+        const charactersEpisode = await this.findCharactersEpisodeFromServer(
           characters
         );
         this.singleEpisode = { name, air_date, charactersEpisode };
@@ -67,7 +66,7 @@ export const useCharactersStore = defineStore("characters", {
         console.error(e);
       }
     },
-    async updateMultipleCharactersEpisode(charactersUrls) {
+    async findCharactersEpisodeFromServer(charactersUrls) {
       try {
         const charactersIds = charactersUrls
           .map((characterUrl) => {
@@ -87,13 +86,13 @@ export const useCharactersStore = defineStore("characters", {
     },
     updatePage(page) {
       this.page = page;
-      this.updateData();
+      this.getCharactersFromServer();
     },
     updateFilters(filter = {}) {
       this.page = 1;
       this.status = filter.status;
       this.filterName = filter.searchName;
-      this.updateData();
+      this.getCharactersFromServer();
     }
   },
   persist: {
