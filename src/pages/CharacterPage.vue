@@ -14,7 +14,7 @@ q-page(v-if="charactersStore.singleCharacter").page-character-card
 </template>
 
 <script>
-import { useCharactersStore } from "../stores/CharactersStore";
+import { useCharactersStore } from "../stores/charactersStore";
 
 export default {
   name: "CharacterPage",

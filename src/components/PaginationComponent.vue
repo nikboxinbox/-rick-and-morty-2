@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { useCharactersStore } from "../stores/CharactersStore";
+import { useCharactersStore } from "../stores/charactersStore";
 
 export default {
   name: "PaginationComponent",

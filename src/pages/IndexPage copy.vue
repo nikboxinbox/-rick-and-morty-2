@@ -8,7 +8,7 @@ q-page
 </template>
 
 <script>
-import { useCharactersStore } from "../stores/CharactersStore";
+import { useCharactersStore } from "../stores/charactersStore";
 // Components
 import CharacterList from "../components/CharactersList.vue";
 import PaginationComponent from "../components/PaginationComponent.vue";

@@ -20,7 +20,7 @@ q-page(v-if="episode").page-episode-card
 </template>
 
 <script>
-import { useCharactersStore } from "../stores/CharactersStore";
+import { useCharactersStore } from "../stores/charactersStore";
 
 export default {
   name: "CharacterPage",
