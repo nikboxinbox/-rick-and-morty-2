@@ -1,6 +1,6 @@
 <template lang="pug">
 .characters-list__cont().q-pa-md.text-white
-  q-list.characters-list__list(dark bordered separator style="max-width: 80%")
+  q-list.characters-list__list(dark bordered separator style="max-width: 80%").q-mt-xl
     q-item.characters-list__item(
       v-for="character in charactersStore.characters"
       :key="character.id"
@@ -9,8 +9,7 @@
         q-avatar(rounded size="180px")
           img(:src="character.image" alt="character.name")
       q-item-section.characters-list__item__section-info
-        a(@click.prevent="$router.push({name:'CharacterPage', params:{id: character.id}})")
-
+        a(@click.prevent="goCharacterPage(character.id)")
           h2.item__section-info__name().q-ma-none.cursor-pointer.text-h6 {{character.name}}
         span.item__section-info__status
           p.status-text().text-subtitle2 {{character.status}}
@@ -24,10 +23,7 @@
                 :key="episode"
                 )
                 a.episode-text-link()
-                  q-btn(
-                    @click.prevent="goEpisodePage(episode)"
-                    ) {{getEpisodeNumber(episode)}}
-
+                  q-btn(@click.prevent="goEpisodePage(episode)") {{getEpisodeNumber(episode)}}
 </template>
 
 <script>
@@ -49,17 +45,24 @@ export default {
         name: "EpisodePage",
         params: { id: this.getEpisodeNumber(episode) }
       });
+    },
+    goCharacterPage(characterId) {
+      this.$router.push({ name: "CharacterPage", params: { id: characterId } });
     }
   }
 };
 </script>
 <style lang="stylus">
+
 .characters-list__cont
   display flex
   justify-content center
 
 .characters-list__item
   border-radius 10px
+
+a :hover
+  color #F2C037
 
 .item__section-info__status
   display: flex

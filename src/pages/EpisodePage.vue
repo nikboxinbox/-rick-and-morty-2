@@ -15,7 +15,6 @@ q-page(v-if="episode").page-episode-card
             img.episode-card__item-character__image(
               :src="character.image"
               )
-
       q-separator
 </template>
 

@@ -5,22 +5,20 @@ q-layout
       q-toolbar.main-layout__tool-bar
         .container-btn
           q-btn(
-            v-show="this.$route.path !== '/'"
+            v-show="$route.path !== '/'"
             @click.prevent="$router.go(-1)"
             icon="arrow_back"
             color="white"
             size="lg"
             flat dense round
-          )
+            )
         q-avatar(size="60px" )
           img(src="~assets/rick.png" size="xl")
         q-toolbar-title Rick and Morty
-        FiltersComponent(v-if="this.$route.path === '/'")
-
+        FiltersComponent(v-if="$route.path === '/'")
   q-page-container
-
     <router-view />
-  </template>
+</template>
 
 <script>
 //Components
@@ -32,10 +30,11 @@ export default {
   }
 };
 </script>
+
 <style lang="stylus">
 .main-layout__tool-bar
   background-color #ff9800
-  height: 60px
+  height 60px
 .container-btn
   width 44px
 .q-toolbar__title

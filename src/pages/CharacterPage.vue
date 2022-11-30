@@ -31,6 +31,7 @@ export default {
   }
 };
 </script>
+
 <style lang="stylus">
 .page-character-card
   padding-top 100px

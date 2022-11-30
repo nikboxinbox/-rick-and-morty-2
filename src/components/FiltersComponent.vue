@@ -15,8 +15,8 @@
         @click="filtration"
         ).cursor-pointer
       q-icon(
-        name="close"
         v-if="searchName!==''"
+        name="close"
         @click="clearSearch"
         ).cursor-pointer
 .filter-status
