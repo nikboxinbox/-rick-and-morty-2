@@ -26,11 +26,11 @@ import { useEpisodeStore } from "../stores/episodeStore";
 export default {
   name: "CharacterPage",
   computed: {
-    episodesStore() {
-      return useEpisodesStore();
+    episodeStore() {
+      return useEpisodeStore();
     },
     episode() {
-      return this.episodesStore.episode;
+      return this.episodeStore.episode;
     }
   },
   methods: {
@@ -39,7 +39,7 @@ export default {
     }
   },
   async created() {
-    await this.episodesStore.getEpisodeFromServer(this.$route.params.id);
+    await this.episodeStore.getEpisodeFromServer(this.$route.params.id);
   }
 };
 </script>
