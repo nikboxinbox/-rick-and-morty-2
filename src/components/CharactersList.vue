@@ -24,7 +24,9 @@
                 :key="episode"
                 )
                 a.episode-text-link()
-                  q-btn(@click.prevent="$router.push({name:'EpisodePage', params:{id: getEpisodeNumber(episode)}})") {{getEpisodeNumber(episode)}}
+                  q-btn(
+                    @click.prevent="goEpisodePage(episode)"
+                    ) {{getEpisodeNumber(episode)}}
 
 </template>
 
@@ -41,6 +43,12 @@ export default {
   methods: {
     getEpisodeNumber(episodeUrl) {
       return episodeUrl.split("/").slice(-1).join();
+    },
+    goEpisodePage(episode) {
+      this.$router.push({
+        name: "EpisodePage",
+        params: { id: this.getEpisodeNumber(episode) }
+      });
     }
   }
 };

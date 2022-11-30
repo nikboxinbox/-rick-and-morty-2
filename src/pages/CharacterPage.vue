@@ -8,9 +8,6 @@ q-page(v-if="charactersStore.singleCharacter").page-character-card
           h3.character-card__name().q-pa-none {{charactersStore.singleCharacter.name}}
           h4.character-card__species {{charactersStore.singleCharacter.species}}
           h4.character-card__location {{charactersStore.singleCharacter.location.name}}
-
-      q-separator
-
 </template>
 
 <script>

@@ -1,19 +1,16 @@
 import { defineStore } from "pinia";
-
-const BASE_URL = "https://rickandmortyapi.com/api";
+import { BASE_URL } from "src/api";
 
 export const useCharactersStore = defineStore("characters", {
   state: () => ({
     characters: [],
+    singleCharacter: null,
     page: 1,
     totalPages: 0,
     totalEl: 0,
     status: "All",
     filterName: "",
-    errorMessageFromApi: null,
-    singleCharacter: null,
-    singleEpisode: null,
-    multipleCharactersImages: null
+    errorMessageFromApi: null
   }),
 
   actions: {
@@ -49,37 +46,6 @@ export const useCharactersStore = defineStore("characters", {
         const data = await response.json();
         const { name, species, image, location } = data;
         this.singleCharacter = { name, species, image, location };
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    async getSingleEpisodeFromServer(id) {
-      try {
-        const response = await fetch(`${BASE_URL}/episode/${id}`);
-        const data = await response.json();
-        const { name, air_date, characters } = data;
-        const charactersEpisode = await this.findCharactersEpisodeFromServer(
-          characters
-        );
-        this.singleEpisode = { name, air_date, charactersEpisode };
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    async findCharactersEpisodeFromServer(charactersUrls) {
-      try {
-        const charactersIds = charactersUrls
-          .map((characterUrl) => {
-            return characterUrl.split("/").slice(-1).join();
-          })
-          .join(",");
-
-        const response = await fetch(`${BASE_URL}/character/${charactersIds}`);
-        const data = await response.json();
-        const CharactersImagesIds = data.map((d) => {
-          return { id: d.id, image: d.image };
-        });
-        return CharactersImagesIds;
       } catch (e) {
         console.error(e);
       }

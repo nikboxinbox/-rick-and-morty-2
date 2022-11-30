@@ -8,10 +8,10 @@ q-page(v-if="episode").page-episode-card
         .episode-card__section-list(v-if="episode.charactersEpisode").flex
           .episode-card__item-character(
             v-for="character in episode.charactersEpisode"
-            :key="character.id"
-            @click="$router.push({name:'CharacterPage', params:{id: character.id}})"
-            color="white"
-            ).cursor-pointer.q-ma-xs
+              :key="character.id"
+              @click="goCharacterPage(character.id)"
+              color="white"
+              ).cursor-pointer.q-ma-xs
             img.episode-card__item-character__image(
               :src="character.image"
               )
@@ -20,22 +20,26 @@ q-page(v-if="episode").page-episode-card
 </template>
 
 <script>
-import { useCharactersStore } from "../stores/charactersStore";
+// import { useCharactersStore } from "../stores/charactersStore";
+import { useEpisodeStore } from "../stores/episodeStore";
 
 export default {
   name: "CharacterPage",
   computed: {
-    charactersStore() {
-      return useCharactersStore();
+    episodesStore() {
+      return useEpisodesStore();
     },
     episode() {
-      return this.charactersStore.singleEpisode;
+      return this.episodesStore.episode;
+    }
+  },
+  methods: {
+    goCharacterPage(characterId) {
+      this.$router.push({ name: "CharacterPage", params: { id: characterId } });
     }
   },
   async created() {
-    await this.charactersStore.getSingleEpisodeFromServer(
-      this.$route.params.id
-    );
+    await this.episodesStore.getEpisodeFromServer(this.$route.params.id);
   }
 };
 </script>
